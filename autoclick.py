@@ -46,35 +46,7 @@ def saveFile(message):
         email.write(message+'\n')
 
 
-def situyun():
-    browser.get('http://situcloud.xyz/auth/login')
-    # 将窗口最大化
-    browser.maximize_window()
-    # 格式是PEP8自动转的
-    # 这里是找到输入框,发送要输入的用户名和密码,模拟登陆
-    browser.find_element_by_xpath(
-        "//*[@id='email']").send_keys(os.environ['SITUYUN_USER'])
-    browser.find_element_by_xpath(
-        "//*[@id='password']").send_keys(os.environ['SITUYUN_PASSWORD'])
-    # 在输入用户名和密码之后,点击登陆按钮
-    browser.find_element_by_xpath("//*[@id='app']/section/div/div/div/div[2]/form/div/div[5]/button").click()
-    time.sleep(10)
-    try:
-        if("明日再来" in browser.find_element_by_xpath("//*[@id='checkin-div']").text):
-            saveFile("明日再来!")
-        else:
-            # browser.find_element_by_xpath("//*[@id='checkin-div']/a").send_keys(Keys.ENTER)
-            js = 'document.getElementById("checkin-div").children[0].click();'
-            browser.execute_script(js)
-            print("司徒云打卡成功")
-        time.sleep(3)
-        saveFile("司徒云签到成功！")
-    except NoSuchElementException as e:
-        print ("NoSuchElementException!")
-        saveFile("司徒云签到代码存在异常"+str(e))
-
 if __name__ == '__main__':
     scut()
-    //situyun()
     # 脚本运行成功,退出浏览器
     browser.quit()
