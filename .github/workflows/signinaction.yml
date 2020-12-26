@@ -1,11 +1,9 @@
 name: 'GitHub Actions SCUT SIGN IN'
 
 on:
-  watch:
-    types: started
-  push:
   schedule:
-    - cron: '0 21 * * *'
+    - cron: "0 22 * * *"  # scheduled at 06:00 (UTC+8) everyday
+  workflow_dispatch:
 
 jobs:
   bot:
