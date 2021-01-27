@@ -29,7 +29,7 @@ def scut():
     browser.find_element_by_xpath("//*[@id='index_login_btn']").click()
     time.sleep(50)
     try:
-        browser.find_element_by_xpath("//*[@id="app"]/div/div/div[2]/div[3]/div[3]/button[1]").click()
+        browser.find_element_by_xpath("//*[@id='app']/div/div/div[2]/div[3]/div[3]/button[1]").click()
         print("华工申报成功")
         time.sleep(3)
         saveFile("华工健康申报签到成功！")
